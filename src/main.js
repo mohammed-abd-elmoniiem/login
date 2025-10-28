@@ -31,14 +31,34 @@ var userNameRegex = /^[a-zA-Z][\w]{1,}$/;
 var emailRegex = /^[a-zA-Z][\w\.]{1,}@[a-zA-z]+(\.[a-zA-Z]+)+$/;
 var passwordRegex = /^[\w]{6,}$/;
 
-// initial states
+// initial states ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+
+// set banner div to be ready when needing it to inform user info or instruction
 var banner = document.createElement('div')
-  banner.classList.add(...'position-absolute top-0 p-2 banner rounded-1 banner'.split(' '));
+  banner.classList.add(...'position-absolute top-0 p-2 banner'.split(' '));
 
+// chech if the tap was logged in before
 var loggedInUser = getLoggedUser();
-
+// dispaly the home section if the user   logged in 
 loggedInBefore()
+
+// set default to login ++++++++++++++++++++++++++++++++++
+
+    btnLogin.classList.remove('not-active')
+    btnLogin.classList.add('btn','btn-info')
+
+    btnSignUp.classList.add('not-active');
+    btnSignUp.classList.remove('btn','btn-info');
+ 
+   
+    animate(userNameField,{height:0,opacity:0},{duration:0,ease:'linear'})
+
+    // animating changing h2 content
+    h2.textContent = 'log in'
+
+    // -------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------
 
 
 // toggle between log in and sign up +++++++++++++++++++++++++++++++
@@ -80,7 +100,7 @@ btnLogin.addEventListener('click',function(event){
 
       
           console.log('user not exist')
-          addBanner('user not exist')
+          addBanner("the user doesn't exist")
 
 
         }else{
@@ -96,7 +116,7 @@ btnLogin.addEventListener('click',function(event){
           }
         }
       }else{
-        addBanner('in valid inputs')
+        addBanner('invalid inputs')
 
       }
   }
@@ -141,18 +161,18 @@ btnSignUp.addEventListener('click',function(event){
 
         storeLocal(newUser);
       
-        addBanner('add new user successfully')
+        addBanner('Adding a new user successfully')
 
         }
         else{
         addBanner('the user is already exist')
         
           
-          console.log('the user is already exist')
+          console.log('the user already exists')
         }
 
     }else{
-             console.log('invalid inputs')
+        console.log('invalid inputs')
         addBanner('invalid inputs')
 
     }
@@ -220,21 +240,7 @@ function resetLogic(){
 }
 // --------------------------------------------------------------
 
-// set default to login 
 
-    btnLogin.classList.remove('not-active')
-    btnLogin.classList.add('btn','btn-info')
-
-    btnSignUp.classList.add('not-active');
-    btnSignUp.classList.remove('btn','btn-info');
- // animating delete user name field+++++++++++++++++++++++
-   
-      animate(userNameField,{height:0,opacity:0},{duration:0,ease:'linear'})
-
-    // animating changing h2 content
-    h2.textContent = 'log in'
-
-    
 // add new user successfylly banner ++++++++++++++++++++++++++++
 function addBanner(note){
   
@@ -370,3 +376,8 @@ function addWranig(target){
   target.classList.remove('is-valid')
   target.classList.add('is-invalid')
 }
+
+
+// animation +++++++++++++++++++++++++++++++++++++++++++++
+
+// animate('header div button')

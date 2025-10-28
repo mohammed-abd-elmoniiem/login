@@ -6,8 +6,8 @@ canvas#ss{
     z-index: -15;
 }
 :root{
-    --main-color:rgb(143, 0, 143);
-    --main-bg-color: rgba(143, 0, 143, 0.452);
+    --main-color:rgb(240, 176, 0);
+    --main-bg-color: rgba(250, 204, 0, 0.452);
     --white-color:#eeeeee;
     --bg-primary-color:#232323;
     --p-color:#787878;
@@ -16,6 +16,8 @@ canvas#ss{
     --color-g-2:#535353;
     --color-g-3: #424242;
     --color-g-4: #353535;
+
+  --bg-color:#0000001e;
 
 
     min-height: 100vh;
@@ -26,11 +28,14 @@ body{
     min-height: 100vh;
     background-color: var(--bg-primary-color) !important;
     color: #ffffff !important;
+    background: 
+                linear-gradient(#ff000000 0% 45%,var(--bg-color) 48% 53% ,#00800000 52%) center / 20px 20px,
+                linear-gradient(90deg , #ff000000 0% 45%, var(--bg-color) 48% 53%, #00800000 52%) center / 20px 20px  ,
+                radial-gradient(circle,  var(--main-bg-color) 10%, #00800000 10%) center / 20px 20px
+                            ;
 }
 
-h1{
-    
-}
+
 /* sign up */
 label,h1,h2{
     text-transform: capitalize;
@@ -44,8 +49,10 @@ header>div{
        font-size: 15px;
        padding: 25px; 
        border-radius: 15px;
+       backdrop-filter: brightness(0.9);
       
-       border: var(--white-color) 1px solid;
+       border: var(--main-color) 2px solid;
+       /* backdrop-filter: blur(1px); */
     /* background:linear-gradient(45deg,var(--color-g-1),
         var(--color-g-2),
             var(--color-g-3),
@@ -68,12 +75,14 @@ header div p{
     background-color: inherit !important;
     text-decoration: underline;
     color: var(--white-color) !important;
+    
 }
 button{
     transition: all 1s;
     background-color: var(--main-color) !important;
     border: none !important;
     /* color: var(--white-color) !important; */
+    transition: all 0.5s;
 }
 
 
@@ -87,5 +96,6 @@ div.banner{
 }
 div.banner p{
     margin: 0 !important;
+    text-align: center;
 }
 
