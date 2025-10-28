@@ -1,0 +1,184 @@
+
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/Addons.js';
+import { GLTFLoader } from 'three/examples/jsm/Addons.js';
+
+import { animate ,scroll } from 'motion';
+
+console.log(GLTFLoader)
+// get canvas++++++++++++++++++++++++++++++++++++++
+const canvasElement = document.getElementById('canvas');
+
+const canvasSize = {
+    width:function(){return canvasElement.getBoundingClientRect().width},
+    height:function(){return canvasElement.getBoundingClientRect().height},
+    aspect:function(){return this.width()/this.height()},
+
+
+}
+// -------------------------------------------------------------
+
+// Loaders
+
+const loader = new GLTFLoader();
+
+// scene ,camera and renderer +++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+console.log(canvasSize.aspect())
+const scene = new THREE.Scene();
+console.log(scene)
+scene.background =  new THREE.Color('#c22929')
+
+// scene.overrideMaterial = new THREE.MeshDepthMaterial({displacementBias:0.5})
+const camera = new THREE.PerspectiveCamera(75,canvasSize.aspect(),0.1,3000);
+camera.position.set(0,0,10);
+camera.lookAt(0,0,0)
+scene.add(camera)
+
+const renderer = new THREE.WebGLRenderer({canvas:canvasElement,antialias:true});
+renderer.setSize(canvasSize.width(),canvasSize.height());
+
+renderer.render(scene,camera);
+
+
+
+// loader 
+
+// ---------------------------------------------------------------------------------------------
+
+
+// objects++++++++++++++++++++++++++++++++++++++++++++++++++
+
+const matCapLoader = new THREE.TextureLoader()
+
+const mat = new THREE.MeshMatcapMaterial({side:THREE.DoubleSide,color:0xff00ff});
+
+const MatDep = new THREE.MeshDepthMaterial()
+const matBasic = new THREE.MeshBasicMaterial({color:0xff00ff , side:THREE.DoubleSide})
+const matPhong= new THREE.MeshPhongMaterial({color:0xff00ff, side:THREE.DoubleSide ,wireframe:true})
+const geo = new THREE.BoxGeometry(1)
+
+const sphere = new THREE.Mesh(geo, mat);
+// sphere.rotation.x = Math.PI * 0.5
+
+// create natrons
+ 
+function CreateNatrons(radius=1){
+
+ const natronsGroup = [];
+ const geo = new THREE.SphereGeometry(radius,64,64);
+    
+  for(let i = 0 ; i< 100 ; i++)
+  {
+   
+    const mat= new THREE.MeshMatcapMaterial({color:0xffffff,matcap:new THREE.TextureLoader().load(`./matcaps/${Math.ceil(Math.random()*8)}.png`)})
+    const natron = new THREE.Mesh(geo,mat);
+    
+   
+    natron.position.set( Math.random()-0.5, Math.random()-0.5, Math.random()-0.5)
+    
+    natronsGroup.push(natron);
+
+  }
+
+  return natronsGroup;
+}
+
+
+const natrons = CreateNatrons(.5);
+
+scene.add(...natrons)
+
+function CreateOrbit(radiusOuter ,radiusInner){
+    const mat= new THREE.MeshMatcapMaterial({color:0xffffff,matcap:new THREE.TextureLoader().load(`./matcaps/${Math.ceil(Math.random()*8)}.png`)})
+    const donatGeo = new THREE.TorusGeometry(radiusOuter,radiusInner,64,64)
+    const donat = new THREE.Mesh(donatGeo,mat);
+    
+    
+    const electronGeo = new THREE.SphereGeometry(radiusInner*8,64,64);
+    const electron = new THREE.Mesh(electronGeo,mat);
+    electron.position.set(radiusOuter,0,0)
+
+    const orbitGroup= new THREE.Group()
+
+    scene.add(orbitGroup)
+
+    return orbitGroup.add(donat,electron);
+          
+    
+
+}
+const orbits =[]
+for(var i = 0 ; i < 5 ;i++){
+  orbits.push(CreateOrbit(3+ i*0.5,0.05));
+}
+
+
+
+
+
+
+
+
+
+
+
+// scene.add(orbit1,orbit2,orbit3,orbit4)
+
+
+// load 
+
+
+
+//  animate(model,{opacity:0})
+// light++++++++++++++++++++++
+
+const dirLight = new THREE.DirectionalLight(0xffffff ,0.1);
+
+
+const amLight= new THREE.AmbientLight(0xffffff , 0.2)
+scene.add(dirLight , amLight)
+// controls ++++++++++++++++++++++++++++++++++++++
+
+const orbitControl = new OrbitControls(camera , canvasElement)
+orbitControl.update()
+orbitControl.dampingFactor = 0.5
+orbitControl.enableDamping= true
+
+
+// animation ++++++++++++++++++++++++++++++++++++
+let time = 0
+const clock = new THREE.Clock()
+function animation(){
+    time = clock.getElapsedTime()
+    renderer.render(scene,camera);
+    // let rota = time*0.2*(index+1);
+
+    orbits.forEach((orbit,index)=>{
+      orbit.rotation.set(time*0.1*(index+1),time*0.1*(index+1),time*(index+1))
+    })
+    
+    // sphere.rotation.z = time
+
+    requestAnimationFrame(animation)
+}
+
+animation()
+// ----------------------------------------------------
+
+
+
+// resize ++++++++++++++++++++++++++++++++++++++++++++
+
+window.addEventListener('resize',eve=>{
+    canvasElement.style.cssText = 'width:100%;height:100vh;';
+    camera.aspect = canvasSize.aspect();
+    camera.updateProjectionMatrix();
+    renderer.setSize(canvasSize.width(),  canvasSize.height());
+    renderer.setPixelRatio(Math.min(2,window.devicePixelRatio));
+    renderer.render(scene,camera);
+})
+
+// ----------------------------------------------------------------------
+
+
+

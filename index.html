@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/vite.svg" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+  </head>
+  <body class="position-relative">
+    <!-- <div class="position-absolute top-0 p-2 banner rounded-1">
+      <p class="">add new user successfully</p>
+    </div> -->
+    <h1 class="mx-auto pt-5 text-center">login system</h1>
+    <header class="container">
+      <div class="sign-up d-flex flex-column border-1 mx-auto">
+        <h2 class="align-self-center">sign up</h2>
+        <div class="user-name-field">
+          <label for="user-name" class="form-label"> user Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="user-name"
+            placeholder="enter the user name"
+          />
+          <p class="info text-danger opacity-0">
+            user name must contain at least 3 characters and numbers
+            only(ab..,123..).
+          </p>
+        </div>
+
+        <div class="mb-1 z-1">
+          <label for="user-email" class="form-label"> email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="user-email"
+            placeholder="enter your email"
+          />
+          <p class="info text-danger opacity-0">
+            you entered an invalid email, ex. (exampe@.exaple.com)
+          </p>
+        </div>
+
+        <div class="mb-1">
+          <label for="password" class="form-label"> password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="enter your password"
+          />
+          <p class="info text-danger opacity-0">
+            the password consists of al least 6 digits (numbers , characters)
+          </p>
+        </div>
+
+        <div class="align-self-center">
+          <button class="not-active" id="login">login</button>
+          <button class="btn btn-info" id="sign-up">sign up</button>
+        </div>
+      </div>
+
+      <!-- <div class="login d-flex flex-column border-1 mx-auto">
+        <h2 class="align-self-center">Login</h2>
+
+        <div class="mb-1">
+          <label for="user-email-login" class="form-label"> email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="user-email-login"
+            placeholder="enter your email"
+          />
+          <p class="info text-danger opacity-0">you entered an invalid email</p>
+        </div>
+
+        <div class="mb-1">
+          <label for="password-login" class="form-label"> password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password-login"
+            placeholder="enter your password"
+          />
+          <p class="info text-danger opacity-0">invalid input</p>
+        </div>
+
+        <div class="align-self-center">
+          <button class="btn btn-info" id="login">login</button>
+          <span class="">sign up</span>
+        </div>
+      </div> -->
+    </header>
+    <!-- <section class="d-flex flex-column align-items-center h-100">
+      <h3>welcome user</h3>
+
+      <button id="logout" class="btn btn-warning">logout</button>
+    </section> -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

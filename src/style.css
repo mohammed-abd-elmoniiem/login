@@ -1,0 +1,91 @@
+
+canvas#ss{
+    width:100vw;
+    height: 100vh;
+    inset: 0;
+    z-index: -15;
+}
+:root{
+    --main-color:rgb(143, 0, 143);
+    --main-bg-color: rgba(143, 0, 143, 0.452);
+    --white-color:#eeeeee;
+    --bg-primary-color:#232323;
+    --p-color:#787878;
+    
+    --color-g-1:#3b3b3b;
+    --color-g-2:#535353;
+    --color-g-3: #424242;
+    --color-g-4: #353535;
+
+
+    min-height: 100vh;
+
+    
+}
+body{
+    min-height: 100vh;
+    background-color: var(--bg-primary-color) !important;
+    color: #ffffff !important;
+}
+
+h1{
+    
+}
+/* sign up */
+label,h1,h2{
+    text-transform: capitalize;
+}
+header{
+    width: fit-content;
+    /* backdrop-filter: blur(15px); */
+}
+header>div{
+       max-width: 500px;
+       font-size: 15px;
+       padding: 25px; 
+       border-radius: 15px;
+      
+       border: var(--white-color) 1px solid;
+    /* background:linear-gradient(45deg,var(--color-g-1),
+        var(--color-g-2),
+            var(--color-g-3),
+                var(--color-g-4)); */
+}
+header div ::placeholder{
+    font-size: 15px;
+    text-transform: capitalize;
+}
+
+header div p{
+    font-size: 12px;
+}
+
+
+
+
+.not-active{
+    border: none;
+    background-color: inherit !important;
+    text-decoration: underline;
+    color: var(--white-color) !important;
+}
+button{
+    transition: all 1s;
+    background-color: var(--main-color) !important;
+    border: none !important;
+    /* color: var(--white-color) !important; */
+}
+
+
+div.banner{
+    width:350px;
+    left: 50%;
+    transform: translateX(-50%) ;
+    background-color:var(--main-bg-color) ;
+    border-left: 5px solid var(--main-color);
+  
+}
+div.banner p{
+    margin: 0 !important;
+}
+
