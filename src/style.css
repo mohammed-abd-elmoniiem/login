@@ -102,6 +102,9 @@ body{
 }
 
 /* sign up */
+h1{
+    font-size: 45px;
+}
 label,h1,h2{
     text-transform: capitalize;
 }
@@ -168,7 +171,7 @@ button{
 
 div.banner{
     width:350px;
-    top: 50px !important;
+    top: 70px !important;
     left: 50%;
     transform: translateX(-50%) ;
     background-color:var(--main-bg-color) ;

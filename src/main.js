@@ -1,11 +1,11 @@
-import './style.css'
+
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
 import '@fortawesome/fontawesome-free/css/all.min.css'
-
+import './style.css'
 import { animate } from 'motion';
 
 
@@ -21,10 +21,6 @@ var themeBtn = document.querySelector('div.theme');
 
 var h2 = document.querySelector('h2')
 
-
-
-var userEmailLogin = document.getElementById('user-email-login');
-var userPasswordLogin= document.getElementById('password-login');
 var btnLogin = document.querySelector('button#login');
 
 
@@ -172,9 +168,15 @@ btnSignUp.addEventListener('click',function(event){
 
         if(checkUserNotExist(newUser.userEmail)){
 
-        storeLocal(newUser);
+        storeLocal(newUser);  //store the data of the new user
       
         addBanner('Adding a new user successfully')
+
+        localStorage.setItem('loggedInUser',JSON.stringify(newUser.data.userName)) //make the user logged in
+             
+               loggedInUser = getLoggedUser(); //get the data  of the logged in
+
+               welcomePage()  // redirect to home page of the logged
 
         }
         else{
@@ -200,7 +202,7 @@ btnSignUp.addEventListener('click',function(event){
 // create welcoe page
 
 function welcomePage(){
-
+   resetLogic()
   // remove the login 
         document.querySelector('header').classList.add('d-none')
             // animate('header',{opacity:0},{duration:0.1}).finished.then(()=>{
@@ -281,7 +283,7 @@ function loggedInBefore(){
 // get logged in user++++++++++++++++++++++++++++++++++
 
 function getLoggedUser(){
-  return JSON.parse(localStorage.getItem('loggedInUser')) || null
+  return (JSON.parse((localStorage.getItem('loggedInUser'))) || null)
 }
 
 // ------------------------------------------------------
