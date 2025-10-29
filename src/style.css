@@ -102,8 +102,8 @@ body{
 }
 
 /* sign up */
-h1{
-    font-size: 45px;
+h1,h4{
+    font-size: 25px;
 }
 label,h1,h2{
     text-transform: capitalize;
@@ -183,3 +183,15 @@ div.banner p{
     text-align: center;
 }
 
+
+
+@media screen and (min-width:776px) {
+    h1 {
+            font-size: 45px;
+        }
+        h4 {
+            font-size: 65px;
+            
+        }
+    
+}

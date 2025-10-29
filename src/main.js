@@ -25,7 +25,7 @@ var btnLogin = document.querySelector('button#login');
 
 
 
-var userNameRegex = /^[a-zA-Z][\w]{1,}$/;
+var userNameRegex = /^[a-zA-Z][\w ]{1,}$/;
 var emailRegex = /^[a-zA-Z][\w\.]{1,}@[a-zA-z]+(\.[a-zA-Z]+)+$/;
 var passwordRegex = /^[\w]{6,}$/;
 
@@ -212,7 +212,8 @@ function welcomePage(){
         
         section.classList.add("d-flex","flex-column","align-items-center","justify-content-center",'text-center')
               section.innerHTML=`
-              <h3 class="text-capitalize">welcome ${loggedInUser}</h3>
+              <p class="text-capitalize fs-1">welcome </p>
+              <h4 class="text-capitalize">${loggedInUser}</h4>
 
              <button id="logout" class="btn btn-warning">logout</button> 
               
