@@ -62,7 +62,7 @@ loggedInBefore()
     // -------------------------------------------------
 
     // set theme 
-    if(localStorage.getItem('theme') == 'dark') document.body.classList.add('dark')
+    if(localStorage.getItem('theme') != 'dark') document.body.classList.add('dark')
 // --------------------------------------------------------------------------------------------------------------
 
 
@@ -80,15 +80,15 @@ btnLogin.addEventListener('click',function(event){
     btnSignUp.classList.remove('btn','btn-info');
 
     // animating delete user name field+++++++++++++++++++++++
-    animate(userNameField,{x:200,opacity:0},{duration:0.5,ease:'linear'}).finished.then(()=>{
-      animate(userNameField,{height:0},{duration:0.5,ease:'linear'})
+    animate(userNameField,{x:200,opacity:0},{duration:0.3,ease:'linear'}).finished.then(()=>{
+      animate(userNameField,{height:0},{duration:0.3,ease:'linear'})
     })
 
     // animating changing h2 content
-    animate(h2,{x:100,opacity:0},{duration:0.5}).then(()=>{
+    animate(h2,{x:100,opacity:0},{duration:0.3}).then(()=>{
       h2.textContent = 'log in'
      
-        animate(h2,{x:0,opacity:1},{duration:0.5})
+        animate(h2,{x:0,opacity:1},{duration:0.3})
     })
 
     // userNameField.classList.add('d-none')
@@ -147,15 +147,19 @@ btnSignUp.addEventListener('click',function(event){
     btnLogin.classList.remove('btn','btn-info');
 
     
-
-      animate(userNameField,{height:100},{duration:0.5}).finished.then(()=>{
-      animate(userNameField,{x:0,opacity:1},{duration:0.5,ease:'linear'})
-    })
+     var sequences=[
+      [userNameField,{height:100},{duration:0.3}],
+      [userNameField,{x:0,opacity:1},{duration:0.3,ease:'linear'}]
+     ]
+      animate(sequences)
+    //   .finished.then(()=>{
+    //   animate(userNameField,{x:0,opacity:1},{duration:0.3,ease:'linear'})
+    // })
  // animating changing h2 content
-    animate(h2,{y:100,opacity:0},{duration:0.5}).then(()=>{
+    animate(h2,{y:100,opacity:0},{duration:0.3}).then(()=>{
       h2.textContent = 'sign up'
      
-        animate(h2,{y:0,opacity:1},{duration:0.5})
+        animate(h2,{y:0,opacity:1},{duration:0.3})
     })
 
 
@@ -221,7 +225,7 @@ function welcomePage(){
                 document.querySelector('header').classList.replace('d-none','d-block');
                 
                 resetLogic()
-                animate('header',{opacity:1},{duration:0.5})
+                animate('header',{opacity:1},{duration:0.3})
 
 
               })
@@ -259,7 +263,7 @@ function addBanner(note){
  
   document.body.prepend(banner)
  
-  animate(banner,{opacity:[0,1]},{duration:0.5,type:'spring',stiffness:300})
+  animate(banner,{opacity:[0,1]},{duration:0.3,type:'spring',stiffness:300})
 
 }
 // --------------------------------------------------------------------------
@@ -403,15 +407,16 @@ themeBtn.addEventListener('click',(event)=>{
   if(document.body.classList.contains('dark' )){
 
     localStorage.setItem('theme','light');
-    animate('div.theme i.fa-sun',{x:0 ,opacity:1},{duration:0.5})
-    animate('div.theme i.fa-moon',{x:-20 , opacity:0},{duration:0.5})
+    animate('div.theme i.fa-sun',{x:0 ,opacity:1},{duration:0.3})
+    animate('div.theme i.fa-moon',{x:-20 , opacity:0},{duration:0.3
+    })
 
     
    
   }else{
 
-    animate('div.theme i.fa-sun',{x:20 , opacity:0},{duration:0.5})
-    animate('div.theme i.fa-moon',{x:0 , opacity:1},{duration:0.5})
+    animate('div.theme i.fa-sun',{x:20 , opacity:0},{duration:0.3})
+    animate('div.theme i.fa-moon',{x:0 , opacity:1},{duration:0.3})
     localStorage.setItem('theme','dark') 
 
   }
