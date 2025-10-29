@@ -38,7 +38,7 @@ var passwordRegex = /^[\w]{6,}$/;
 
 // set banner div to be ready when needing it to inform user info or instruction
 var banner = document.createElement('div')
-  banner.classList.add(...'position-absolute top-0 p-2 banner'.split(' '));
+  banner.classList.add(...'position-absolute top-0 p-1 banner'.split(' '));
 
 // chech if the tap was logged in before
 var loggedInUser = getLoggedUser();
@@ -118,6 +118,10 @@ btnLogin.addEventListener('click',function(event){
 
                welcomePage()
             
+          }else{
+             console.log('wrong password')
+          addBanner("wrong password")
+
           }
         }
       }else{
@@ -318,7 +322,7 @@ function getLocal(userEmail){
   return JSON.parse( localStorage.getItem(userEmail))
 }
 // validation on the user name++++++++++++++++++++++
-userName.addEventListener('input',function(event){
+userName.addEventListener('blur',function(event){
    
 
   isValid(event.target, userNameRegex)
@@ -328,7 +332,7 @@ userName.addEventListener('input',function(event){
 
 
 // validation on the email ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-userEmail.addEventListener('input',function(event){
+userEmail.addEventListener('blur',function(event){
    
 
  isValid(event.target, emailRegex)
@@ -340,7 +344,7 @@ userEmail.addEventListener('input',function(event){
 
 
 // validation on the password ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-userPassword.addEventListener('input',function(event){
+userPassword.addEventListener('blur',function(event){
    
 
   isValid(event.target, passwordRegex)
