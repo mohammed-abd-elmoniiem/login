@@ -200,7 +200,7 @@ function welcomePage(){
         var section = document.createElement('section');
 
         
-        section.classList.add("d-flex","flex-column","align-items-center","justify-content-center")
+        section.classList.add("d-flex","flex-column","align-items-center","justify-content-center",'text-center')
               section.innerHTML=`
               <h3 class="text-capitalize">welcome ${loggedInUser}</h3>
 

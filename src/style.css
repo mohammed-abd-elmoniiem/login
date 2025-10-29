@@ -8,10 +8,12 @@ canvas#ss{
 :root{
     --main-color:rgb(240, 176, 0);
     --main-bg-color: rgba(250, 204, 0, 0.452);
-    --white-color:#181818;
+    --white-color:#0c0b00;
     --bg-primary-color:#232323;
     --p-color:#f8f8f8;
     --bg-color:#0000001e;
+
+    --bg-log-color:#161616;
 
     --dark-theme-color-ff: #ffffff;
         --dark-theme-color-00: #000000;
@@ -20,15 +22,17 @@ canvas#ss{
     
 }
 .dark{
-    --main-color: rgb(255, 0, 0);
-    --main-bg-color: rgba(255, 0, 0, 0.582);
+    --main-color: rgb(0, 172, 86);
+    --main-bg-color: rgba(72, 255, 154, 0.651);
 
-    --white-color: #eeeeee;
+    --white-color: #d5e7e5;
 
-    --bg-primary-color: #dfdfdf;
-    --bg-color: #ebebeb;
+    --bg-primary-color: #e9e9e9;
+    --bg-color: #ffffff;
     
     --p-color: #1b1b1b;
+
+    --bg-log-color: #ffffff;
 
     --dark-theme-color-ff:#ffffff;
     --dark-theme-color-00: #000000;
@@ -77,13 +81,15 @@ body{
     min-height: 100vh;
     background-color: var(--bg-primary-color) !important;
     color: var(--p-color)!important;
-    background: radial-gradient(circle,  var(--main-bg-color) 11%, #00800000 11%) center / 20px 20px,
+    background:
+    linear-gradient(var(--white-color) 20%,transparent),
+    radial-gradient(circle,  var(--main-bg-color) 11%, #00800000 11%) center / 20px 20px,
                 linear-gradient(#ff000000 0% 45%,var(--bg-color) 48% 53% ,#00800000 52%) center / 20px 20px,
                 linear-gradient(90deg , #ff000000 0% 45%, var(--bg-color) 48% 53%, #00800000 52%) center / 20px 20px  
                 
                             ;
 
-    animation: moving .5s linear 0s infinite   ;
+    /* animation: moving .5s linear 0s infinite   ; */
 }
 @keyframes moving {
     0%{
@@ -116,12 +122,24 @@ header>div{
        border-radius: 15px;
        /* backdrop-filter: brightness(0.9); */
       
-       border: var(--main-color) 1px solid;
+       /* border: var(--main-color) 1px solid; */
        backdrop-filter: blur(1px);
-    /* background:linear-gradient(45deg,var(--color-g-1),
-        var(--color-g-2),
-            var(--color-g-3),
-                var(--color-g-4)); */
+    background-color: var(--bg-log-color);
+ 
+}
+
+div.sign-up h2{
+    /* border: var(--main-color) 1px solid; */
+    /* width: 100px;
+    height: 100px; */
+    /* border-radius: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 100%;
+    /* background-color: var(--main-color); */
+    /* box-shadow: 0 0 1px var(--p-color); */
 }
 header div ::placeholder{
     font-size: 15px;
