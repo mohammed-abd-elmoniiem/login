@@ -399,18 +399,16 @@ themeBtn.addEventListener('click',(event)=>{
   if(document.body.classList.contains('dark' )){
 
     localStorage.setItem('theme','light');
+    animate('div.theme i.fa-sun',{x:0 ,opacity:1},{duration:0.5})
+    animate('div.theme i.fa-moon',{x:-20 , opacity:0},{duration:0.5})
 
-
-    //  animate('div.theme i.fa-sun',{x:30 ,scale:0, opacity:0},{duration:0.5})
-    //  animate('div.theme i.fa-moon',{x:0 ,scale:1, opacity:1},{duration:0})
+    
+   
   }else{
 
-    //  animate('div.theme i.fa-sun',{x:0 ,scale:1,opacity:1},{duration:0})
-
-    //  animate('div.theme i.fa-moon',{x:-30 ,scale:0, opacity:0},{duration:0.5})
-
-
-        localStorage.setItem('theme','dark') 
+    animate('div.theme i.fa-sun',{x:20 , opacity:0},{duration:0.5})
+    animate('div.theme i.fa-moon',{x:0 , opacity:1},{duration:0.5})
+    localStorage.setItem('theme','dark') 
 
   }
 

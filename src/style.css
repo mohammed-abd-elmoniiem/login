@@ -38,7 +38,7 @@ canvas#ss{
 }
 
 *{
-    transition: all 0.5s;
+    transition: color 0.5s , background 0.5s;
 }
 
 div.theme{
@@ -82,8 +82,18 @@ body{
                 linear-gradient(90deg , #ff000000 0% 45%, var(--bg-color) 48% 53%, #00800000 52%) center / 20px 20px  
                 
                             ;
-}
 
+    animation: moving .5s linear 0s infinite   ;
+}
+@keyframes moving {
+    0%{
+        background-position: 0px 0px;
+    }
+        100% {
+            background-position: 20px 20px;
+        }
+    
+}
 
 /* sign up */
 label,h1,h2{
