@@ -17,6 +17,8 @@ var userEmail = document.getElementById('user-email');
 var userPassword = document.getElementById('password');
 var btnSignUp = document.querySelector('button#sign-up');
 
+var themeBtn = document.querySelector('div.theme');
+
 var h2 = document.querySelector('h2')
 
 
@@ -58,6 +60,9 @@ loggedInBefore()
     h2.textContent = 'log in'
 
     // -------------------------------------------------
+
+    // set theme 
+    if(localStorage.getItem('theme') == 'dark') document.body.classList.add('dark')
 // --------------------------------------------------------------------------------------------------------------
 
 
@@ -195,7 +200,7 @@ function welcomePage(){
         var section = document.createElement('section');
 
         
-        section.classList.add("d-flex","flex-column","align-items-center","h-100","justify-content-center")
+        section.classList.add("d-flex","flex-column","align-items-center","justify-content-center")
               section.innerHTML=`
               <h3 class="text-capitalize">welcome ${loggedInUser}</h3>
 
@@ -381,3 +386,37 @@ function addWranig(target){
 // animation +++++++++++++++++++++++++++++++++++++++++++++
 
 // animate('header div button')
+
+
+
+
+
+// dark mode 
+
+themeBtn.addEventListener('click',(event)=>{
+  document.body.classList.toggle('dark')
+
+  if(document.body.classList.contains('dark' )){
+
+    localStorage.setItem('theme','light');
+
+
+    //  animate('div.theme i.fa-sun',{x:30 ,scale:0, opacity:0},{duration:0.5})
+    //  animate('div.theme i.fa-moon',{x:0 ,scale:1, opacity:1},{duration:0})
+  }else{
+
+    //  animate('div.theme i.fa-sun',{x:0 ,scale:1,opacity:1},{duration:0})
+
+    //  animate('div.theme i.fa-moon',{x:-30 ,scale:0, opacity:0},{duration:0.5})
+
+
+        localStorage.setItem('theme','dark') 
+
+  }
+
+  // animate theme icons
+
+
+
+})
+
